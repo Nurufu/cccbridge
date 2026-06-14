@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.13-SNAPSHOT'
+	id 'fabric-loom' version '1.12-SNAPSHOT'
 	id "io.github.p03w.machete" version "2.+"
 	id 'maven-publish'
 }
@@ -78,6 +78,15 @@ dependencies {
 		case "disabled": break
 		default: println("Unknown recipe viewer specified: ${recipe_viewer}. Must be REI, EMI, or disabled.")
 	}
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 17
 }
 
 processResources {
